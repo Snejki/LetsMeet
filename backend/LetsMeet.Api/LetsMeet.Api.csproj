@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <InvariantGlobalization>true</InvariantGlobalization>
+        <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+    </PropertyGroup>
+
+
+
+    <ItemGroup>
+      <Content Include="..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
+    </ItemGroup>
+
+
+
+    <ItemGroup>
+      <ProjectReference Include="..\Modules\Users\LetsMeet.Modules.Users.Api\LetsMeet.Modules.Users.Api.csproj" />
+      <ProjectReference Include="..\Shared\LetsMeet.Shared.Infrastructure\LetsMeet.Shared.Infrastructure.csproj" />
+    </ItemGroup>
+
+
+
+    <ItemGroup>
+      <Folder Include="logs\" />
+    </ItemGroup>
+
+</Project>
