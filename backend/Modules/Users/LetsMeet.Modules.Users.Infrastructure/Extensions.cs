@@ -5,6 +5,7 @@ using LetsMeet.Modules.Users.Infrastructure.Repositories;
 using LetsMeet.Modules.Users.Infrastructure.Services;
 using LetsMeet.Shared.Infrastructure.Database;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace LetsMeet.Modules.Users.Infrastructure;
@@ -13,8 +14,9 @@ public static class Extensions
 {
     public static void AddInfrastructure(this IServiceCollection services)
     {
-        services.AddTransient<IUserRepository, UserRepository>();
+        services.AddTransient<IUserRepository, UserRepository>();   
         services.AddTransient<IPasswordEncrypter, PasswordEncrypter>();
+        services.AddScoped<IPasswordHasher<string>, PasswordHasher<string>>();
         
         services.AddCustomDbContext<UsersDbContext>("Users");
     }

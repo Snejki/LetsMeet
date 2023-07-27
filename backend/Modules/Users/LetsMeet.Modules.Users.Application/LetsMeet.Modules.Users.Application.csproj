@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\Shared\LetsMeet.Shared.Abstractions\LetsMeet.Shared.Abstractions.csproj" />
+      <ProjectReference Include="..\..\..\Shared\LetsMeet.Shared.Infrastructure\LetsMeet.Shared.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>
