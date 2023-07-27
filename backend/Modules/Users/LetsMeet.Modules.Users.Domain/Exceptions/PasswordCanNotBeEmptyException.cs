@@ -2,7 +2,7 @@
 
 namespace LetsMeet.Modules.Users.Domain.Exceptions;
 
-public class PasswordCanNotBeEmpty: LetsMeetException
+public class PasswordCanNotBeEmptyException: LetsMeetException
 {
     
 }

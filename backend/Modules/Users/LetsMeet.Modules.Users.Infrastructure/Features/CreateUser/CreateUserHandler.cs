@@ -21,11 +21,11 @@ public class CreateUserHandler
             throw new UserWithProvidedEmailAlreadyExists();
         }
 
-        var userId = UserId.Create(Guid.NewGuid());
-        var email = Email.Create(command.Email);
-        var firstName = FirstName.Create(command.FirstName);
-        var lastname = LastName.Create(command.Lastname);
-        var password = Password.Create(passwordEncrypter.HashPassword(command.Password));
+        var userId = (UserId) Guid.NewGuid();
+        var email = (Email) command.Email;
+        var firstName = (FirstName) command.FirstName;
+        var lastname = (LastName) command.Lastname;
+        var password = (HashedPassword) passwordEncrypter.HashPassword(command.Password);
 
         user = User.Create(userId, email, firstName, lastname, password);
 

@@ -2,7 +2,7 @@
 
 namespace LetsMeet.Modules.Users.Domain.Exceptions;
 
-public class EmailShouldBeInCorrectFormat : LetsMeetException
+public class EmailShouldBeInCorrectFormatException : LetsMeetException
 {
     
 }

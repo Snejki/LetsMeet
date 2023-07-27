@@ -24,8 +24,8 @@ public class UserConfiguration: IEntityTypeConfiguration<User>
             .HasConversion(x => x.Value, x => LastName.Create(x))
             .IsRequired();
         
-        builder.Property(x => x.Password)
-            .HasConversion(x => x.Value, x => Password.Create(x))
+        builder.Property(x => x.HashedPassword)
+            .HasConversion(x => x.Value, x => HashedPassword.Create(x))
             .IsRequired();
     }
 }

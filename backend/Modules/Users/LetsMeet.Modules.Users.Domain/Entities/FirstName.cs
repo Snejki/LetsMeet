@@ -8,16 +8,16 @@ public record FirstName
 
     private FirstName(string value)
     {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            throw new FirstNameCaNotBeEmptyException();
+        }
+        
         Value = value;
     }
 
-    public static FirstName Create(string firstName)
-    {
-        if (string.IsNullOrWhiteSpace(firstName))
-        {
-            throw new FirstNameCaNotBeEmpty();
-        }
+    public static FirstName Create(string firstName) => new(firstName);
 
-        return new FirstName(firstName);
-    }
+    public static explicit operator FirstName(string value) => new(value);
+    public static implicit operator string(FirstName value) => value.Value;
 }

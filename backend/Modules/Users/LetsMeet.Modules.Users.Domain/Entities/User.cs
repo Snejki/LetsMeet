@@ -8,7 +8,7 @@ public sealed class User
     public Email Email { get; }
     public FirstName FirstName { get; }
     public LastName LastName { get; }
-    public Password Password { get; }
+    public HashedPassword HashedPassword { get; }
 
     private User()
     {
@@ -18,19 +18,19 @@ public sealed class User
         Email email, 
         FirstName firstName, 
         LastName lastName, 
-        Password password)
+        HashedPassword hashedPassword)
     {
         Id = userId ?? throw new Exception();
-        Email = email ?? throw new EmailShouldBeInCorrectFormat();
-        FirstName = firstName ?? throw new FirstNameCaNotBeEmpty();
-        LastName = lastName ?? throw new LastNameCanNotBeEmpty();
-        Password = password ?? throw new PasswordCanNotBeEmpty();
+        Email = email ?? throw new EmailShouldBeInCorrectFormatException();
+        FirstName = firstName ?? throw new FirstNameCaNotBeEmptyException();
+        LastName = lastName ?? throw new LastNameCanNotBeEmptyException();
+        HashedPassword = hashedPassword ?? throw new PasswordCanNotBeEmptyException();
     }
 
     public static User Create(UserId userId, 
         Email email, 
         FirstName firstName, 
         LastName lastName, 
-        Password password) 
-            => new User(userId, email, firstName, lastName, password);
+        HashedPassword hashedPassword) 
+            => new User(userId, email, firstName, lastName, hashedPassword);
 }

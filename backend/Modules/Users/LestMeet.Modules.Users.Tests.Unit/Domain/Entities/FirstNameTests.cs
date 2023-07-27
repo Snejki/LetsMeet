@@ -29,6 +29,6 @@ public sealed class FirstNameTests
     {
         var exception = Record.Exception(() => FirstName.Create(value));
 
-        exception.Should().BeOfType<FirstNameCaNotBeEmpty>();
+        exception.Should().BeOfType<FirstNameCaNotBeEmptyException>();
     }
 }

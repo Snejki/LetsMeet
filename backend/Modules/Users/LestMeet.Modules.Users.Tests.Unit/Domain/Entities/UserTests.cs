@@ -13,7 +13,7 @@ public sealed class UserTests
         var email = Email.Create("mail@mail.com");
         var firstName = FirstName.Create("Thomas");
         var lastName = LastName.Create("Kowalsky");
-        var password = Password.Create("hash");
+        var password = HashedPassword.Create("hash");
 
         var sut = User.Create(userId, email, firstName, lastName, password);
 
@@ -21,6 +21,6 @@ public sealed class UserTests
         sut.Email.Should().BeEquivalentTo(email);
         sut.FirstName.Should().BeEquivalentTo(firstName);
         sut.LastName.Should().BeEquivalentTo(lastName);
-        sut.Password.Should().BeEquivalentTo(password);
+        sut.HashedPassword.Should().BeEquivalentTo(password);
     }
 }

@@ -16,7 +16,7 @@ public record  Email
     {
         if (!IsValid(value))
         {
-            throw new EmailShouldBeInCorrectFormat();
+            throw new EmailShouldBeInCorrectFormatException();
         }
 
         return new Email(value);
@@ -34,4 +34,6 @@ public record  Email
             return false;
         }
     }
+
+    public static explicit operator Email(string email) => Email.Create(email);
 }

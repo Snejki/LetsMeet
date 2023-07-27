@@ -2,7 +2,7 @@
 
 namespace LetsMeet.Modules.Users.Domain.Exceptions;
 
-public class FirstNameCaNotBeEmpty : LetsMeetException
-{ 
+public class LastNameCanNotBeEmptyException : LetsMeetException
+{
     
 }

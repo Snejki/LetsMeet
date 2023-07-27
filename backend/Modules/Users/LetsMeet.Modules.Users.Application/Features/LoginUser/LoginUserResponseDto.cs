@@ -1,6 +1,3 @@
 ﻿namespace LetsMeet.Modules.Users.Application.Features.LoginUser;
 
-public class LoginUserResponseDto
-{
-    
-}   
+public record LoginUserResponseDto(Guid UserId, string Token);
