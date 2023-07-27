@@ -3,6 +3,7 @@ using LetsMeet.Shared.Infrastructure.CorrelationId;
 using LetsMeet.Shared.Infrastructure.DateTimeProvider;
 using LetsMeet.Shared.Infrastructure.Exceptions;
 using LetsMeet.Shared.Infrastructure.HealthChecks;
+using LetsMeet.Shared.Infrastructure.Metrics;
 using LetsMeet.Shared.Infrastructure.SeriLog;
 using LetsMeet.Shared.Infrastructure.Swagger;
 using LetsMeet.Shared.Infrastructure.Wolverine;
@@ -23,14 +24,16 @@ public static class Extensions
     
     public static void UseInfrastructure(this WebApplication app)
     {
-        app.UseCustomSwagger();
+        app.UseCustomSwagger();        
+        app.UseCustomMetrics();
+
         app.UseCorrelationIdMiddleware();
         
         //if (!app.Environment.IsDevelopment())
         //{
             app.UseExceptionMiddleware();
         //}
-        
+
         app.UseCustomHealthChecks();
         app.UseHttpsRedirection();
         app.UseAuthorization();
@@ -46,5 +49,6 @@ public static class Extensions
         services.AddCustomSwagger();
         services.AddCustomHealthChecks();
         services.AddExceptionMiddleware();
+        services.AddCustomMetrics();
     }
 }
