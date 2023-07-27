@@ -1,5 +1,6 @@
 ﻿using LetsMeet.Modules.Users.Application.Exceptions;
 using LetsMeet.Modules.Users.Application.Features.CreateUser;
+using LetsMeet.Modules.Users.Application.Services;
 using LetsMeet.Modules.Users.Domain.Entities;
 using LetsMeet.Modules.Users.Domain.Repositories;
 
@@ -11,7 +12,8 @@ public class CreateUserHandler
     // ReSharper disable once UnusedMember.Global
     public static async Task Handle(
         CreateUserCommand command,
-        IUserRepository userRepository) 
+        IUserRepository userRepository, 
+        IPasswordEncrypter passwordEncrypter) 
     {
         var user = await userRepository.GetByEmail(Email.Create(command.Email));
         if (user is not null)
@@ -23,7 +25,7 @@ public class CreateUserHandler
         var email = Email.Create(command.Email);
         var firstName = FirstName.Create(command.FirstName);
         var lastname = LastName.Create(command.Lastname);
-        var password = Password.Create(command.Password);
+        var password = Password.Create(passwordEncrypter.HashPassword(command.Password));
 
         user = User.Create(userId, email, firstName, lastname, password);
 
