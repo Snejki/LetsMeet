@@ -24,6 +24,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LetsMeet.Shared.Tests.Commo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LestMeet.Modules.Users.Tests.Unit", "Modules\Users\LestMeet.Modules.Users.Tests.Unit\LestMeet.Modules.Users.Tests.Unit.csproj", "{358F7D00-779D-457E-A79D-927B57E90C4C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D7B43C57-0B34-4328-8835-E363546EC435}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LetsMeet.Tests.Integration", "Tests\LetsMeet.Tests.Integration\LetsMeet.Tests.Integration.csproj", "{00C556BA-F2D2-4624-A892-1689CDAF232A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,6 +70,10 @@ Global
 		{358F7D00-779D-457E-A79D-927B57E90C4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{358F7D00-779D-457E-A79D-927B57E90C4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{358F7D00-779D-457E-A79D-927B57E90C4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00C556BA-F2D2-4624-A892-1689CDAF232A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00C556BA-F2D2-4624-A892-1689CDAF232A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00C556BA-F2D2-4624-A892-1689CDAF232A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00C556BA-F2D2-4624-A892-1689CDAF232A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C4CA9F46-C2E5-4817-BFFD-CF2F470B798E} = {615E421B-FAC9-46EA-9AFD-7118C1F986C9}
@@ -77,5 +85,6 @@ Global
 		{28826949-3515-4B28-953E-59151385FE66} = {615E421B-FAC9-46EA-9AFD-7118C1F986C9}
 		{AC6F477E-C983-47ED-88BB-0826C19D9380} = {615E421B-FAC9-46EA-9AFD-7118C1F986C9}
 		{358F7D00-779D-457E-A79D-927B57E90C4C} = {1AD34904-6D65-4108-B5F6-ED6C0C47202E}
+		{00C556BA-F2D2-4624-A892-1689CDAF232A} = {D7B43C57-0B34-4328-8835-E363546EC435}
 	EndGlobalSection
 EndGlobal

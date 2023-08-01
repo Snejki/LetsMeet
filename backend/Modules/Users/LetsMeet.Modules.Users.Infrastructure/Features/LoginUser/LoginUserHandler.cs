@@ -9,10 +9,12 @@ namespace LetsMeet.Modules.Users.Infrastructure.Features.LoginUser;
 // ReSharper disable once UnusedType.Global
 public class LoginUserHandler
 {
+    // ReSharper disable once UnusedMember.Global
     public static async Task<LoginUserResponseDto> Handle(
         LoginUserQuery query,
         IUserRepository userRepository,
-        IPasswordEncrypter passwordEncrypter)
+        IPasswordEncrypter passwordEncrypter, 
+        IAuthenticator authenticator)
     {
         var user = await userRepository.GetByEmail((Email) query.Email);
         if (user is null)
@@ -20,11 +22,13 @@ public class LoginUserHandler
             throw new UserNotFoundException();
         }
 
-        if (passwordEncrypter.IsValidPassword(query.Password, user.HashedPassword))
+        if (!passwordEncrypter.IsValidPassword(query.Password, user.HashedPassword))
         {
             throw new UserNotFoundException();
         }
 
-        return new LoginUserResponseDto(user.Id, "::::::");
+        var token = authenticator.CreateToken(user.Id);
+        
+        return new LoginUserResponseDto(user.Id, token);
     }
 }

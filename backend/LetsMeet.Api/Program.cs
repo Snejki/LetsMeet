@@ -8,7 +8,7 @@ var modules = ModulesLoader.LoadModules(assemblies);
 builder.AddInfrastructure(assemblies);
 foreach (var module in modules)
 {
-    module.AddModule(builder.Services);
+    module.AddModule(builder.Services, builder.Configuration);
 }
 
 var app = builder.Build();

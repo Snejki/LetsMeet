@@ -11,9 +11,9 @@ public class AuthEndpoints : IEndpoints
 {
     public void MapEndpoints(IEndpointRouteBuilder app)
     {
-        app.MapGet("api/auth/login",
-                (IMessageBus messageBus) => messageBus
-                    .InvokeAsync<LoginUserResponseDto>(new LoginUserQuery("", "")))
+        app.MapPost("api/auth/login",
+                (IMessageBus messageBus, LoginUserQuery query) => messageBus
+                    .InvokeAsync<LoginUserResponseDto>(query))
             .Produces<LoginUserResponseDto>()
             .Produces(StatusCodes.Status500InternalServerError)
             .WithDescription("Login user")

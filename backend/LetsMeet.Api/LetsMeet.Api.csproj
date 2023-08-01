@@ -29,4 +29,8 @@
       <Folder Include="logs\" />
     </ItemGroup>
 
+    <ItemGroup>
+        <InternalsVisibleTo Include="LetsMeet.Tests.Integration" />
+    </ItemGroup>
+
 </Project>

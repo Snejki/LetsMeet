@@ -1,9 +1,11 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System.Security.Claims;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
 namespace LetsMeet.Shared.Infrastructure.Options;
 
-internal static class Extensions
+public static class Extensions
 {
     public static T GetOptions<T>(this IServiceCollection services, string sectionName) where T : new()
     {
@@ -16,6 +18,14 @@ internal static class Extensions
     {
         var options = new T();
         configuration.GetSection(sectionName).Bind(options);
-        return options;
+        return options; 
+    }
+
+    public static void AddCustomOptions<T>(this IServiceCollection services, IConfiguration configuration,
+        string sectionName) where T : class
+    {
+        services.Configure<T>(configuration.GetSection(sectionName));
+
+        services.AddSingleton(sp => sp.GetRequiredService<IOptions<T>>().Value);
     }
 }

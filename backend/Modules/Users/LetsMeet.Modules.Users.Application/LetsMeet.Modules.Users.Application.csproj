@@ -9,6 +9,7 @@
     <ItemGroup>
       <ProjectReference Include="..\..\..\Shared\LetsMeet.Shared.Abstractions\LetsMeet.Shared.Abstractions.csproj" />
       <ProjectReference Include="..\..\..\Shared\LetsMeet.Shared.Infrastructure\LetsMeet.Shared.Infrastructure.csproj" />
+      <ProjectReference Include="..\LetsMeet.Modules.Users.Domain\LetsMeet.Modules.Users.Domain.csproj" />
     </ItemGroup>
 
 </Project>
