@@ -27,7 +27,7 @@ internal class Authenticator : IAuthenticator
         _authOptions = authOptions;
         _signingCredentials = new SigningCredentials(
             new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(_authOptions.SigningKey)), 
+                Encoding.UTF8.GetBytes(_authOptions.SigningKey!)), 
             SecurityAlgorithms.HmacSha256);
         _jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
     }

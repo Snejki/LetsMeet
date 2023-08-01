@@ -9,6 +9,7 @@ using LetsMeet.Shared.Infrastructure.Swagger;
 using LetsMeet.Shared.Infrastructure.Wolverine;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace LetsMeet.Shared.Infrastructure;
 
@@ -16,7 +17,7 @@ public static class Extensions
 {
     public static void AddInfrastructure(this WebApplicationBuilder builder, IList<Assembly> assemblies)
     {
-        builder.Services.AddServices(assemblies);
+        builder.Services.AddServices();
         builder.Host.UseCustomWolverine(typeof(Extensions).Assembly, assemblies);
         builder.Host.UseCustomLogging(builder.Configuration);
     }
@@ -28,17 +29,17 @@ public static class Extensions
 
         app.UseCorrelationIdMiddleware();
         
-        //if (!app.Environment.IsDevelopment())
-        //{
+        if (!app.Environment.IsDevelopment())
+        {
             app.UseExceptionMiddleware();
-        //}
+        }
 
         app.UseCustomHealthChecks();
         app.UseHttpsRedirection();
         app.UseAuthorization();
     }
 
-    private static void AddServices(this IServiceCollection services, IList<Assembly> assemblies)
+    private static void AddServices(this IServiceCollection services)
     {
         services.AddCorrelationIdGenerator();
         services.AddCorrelationIdMiddleware();

@@ -4,15 +4,11 @@ namespace LetsMeet.Modules.Users.Domain.Entities;
 
 public sealed class User
 {
-    public UserId Id { get; }
-    public Email Email { get; }
-    public FirstName FirstName { get; }
-    public LastName LastName { get; }
-    public HashedPassword HashedPassword { get; }
-
-    private User()
-    {
-    }
+    public UserId Id { get; private set; }
+    public Email Email { get; private set; }
+    public FirstName FirstName { get; private set; }
+    public LastName LastName { get; private set; }
+    public HashedPassword HashedPassword { get; private set; }
 
     private User(UserId userId, 
         Email email, 
@@ -32,5 +28,12 @@ public sealed class User
         FirstName firstName, 
         LastName lastName, 
         HashedPassword hashedPassword) 
-            => new User(userId, email, firstName, lastName, hashedPassword);
+            => new (userId, email, firstName, lastName, hashedPassword);
+    
+    // ReSharper disable once UnusedMember.Local
+#pragma warning disable CS8618
+    internal User()
+    {
+    }
+#pragma warning restore CS8618
 }

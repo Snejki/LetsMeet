@@ -26,5 +26,6 @@ internal static class Extensions
 
     private static void AddMiddlewares(this IPolicies policies)
     {
+        // Method intentionally left empty.
     }
 }

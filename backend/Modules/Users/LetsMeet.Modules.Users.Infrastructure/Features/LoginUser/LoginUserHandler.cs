@@ -30,5 +30,6 @@ public class LoginUserHandler
         var token = authenticator.CreateToken(user.Id);
         
         return new LoginUserResponseDto(user.Id, token);
+
     }
 }
