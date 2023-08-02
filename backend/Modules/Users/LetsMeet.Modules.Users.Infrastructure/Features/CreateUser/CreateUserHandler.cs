@@ -3,6 +3,7 @@ using LetsMeet.Modules.Users.Application.Features.CreateUser;
 using LetsMeet.Modules.Users.Application.Services;
 using LetsMeet.Modules.Users.Domain.Entities;
 using LetsMeet.Modules.Users.Domain.Repositories;
+using LetsMeet.Shared.Abstractions.Kernel;
 
 namespace LetsMeet.Modules.Users.Infrastructure.Features.CreateUser;
 

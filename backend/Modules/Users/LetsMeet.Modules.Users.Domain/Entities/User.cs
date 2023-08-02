@@ -1,4 +1,5 @@
 ﻿using LetsMeet.Modules.Users.Domain.Exceptions;
+using LetsMeet.Shared.Abstractions.Kernel;
 
 namespace LetsMeet.Modules.Users.Domain.Entities;
 
@@ -29,6 +30,11 @@ public sealed class User
         LastName lastName, 
         HashedPassword hashedPassword) 
             => new (userId, email, firstName, lastName, hashedPassword);
+
+    public void ChangePassword(HashedPassword hashedPassword)
+    {
+        HashedPassword = hashedPassword ?? throw new PasswordCanNotBeEmptyException();
+    }
     
     // ReSharper disable once UnusedMember.Local
 #pragma warning disable CS8618

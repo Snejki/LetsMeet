@@ -6,7 +6,7 @@ using LetsMeet.Modules.Users.Application.Features.LoginUser;
 
 namespace LetsMeet.Tests.Integration.Users.Endpoints;
 
-public class AuthEndpointsTests : BaseTests,  IDisposable
+public class AuthEndpointsTests : BaseTests, IDisposable
 {
     private readonly UsersDatabase _usersDatabase;
 
@@ -34,5 +34,6 @@ public class AuthEndpointsTests : BaseTests,  IDisposable
 
     public void Dispose()
     {
+        _usersDatabase.Dispose();
     }
 }

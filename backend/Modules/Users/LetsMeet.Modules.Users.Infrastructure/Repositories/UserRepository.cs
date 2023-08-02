@@ -1,6 +1,7 @@
 ﻿using LetsMeet.Modules.Users.Domain.Entities;
 using LetsMeet.Modules.Users.Domain.Repositories;
 using LetsMeet.Modules.Users.Infrastructure.DAL;
+using LetsMeet.Shared.Abstractions.Kernel;
 using Microsoft.EntityFrameworkCore;
 
 namespace LetsMeet.Modules.Users.Infrastructure.Repositories;
@@ -22,5 +23,11 @@ public class UserRepository : IUserRepository
     {
         _dbContext.Users.Add(user);
         return _dbContext.SaveChangesAsync();
+    }
+
+    public async Task Update(User user)
+    {
+        _dbContext.Users.Update(user);
+        await _dbContext.SaveChangesAsync();
     }
 }

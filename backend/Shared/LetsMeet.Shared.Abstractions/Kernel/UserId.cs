@@ -1,4 +1,4 @@
-﻿namespace LetsMeet.Modules.Users.Domain.Entities;
+﻿namespace LetsMeet.Shared.Abstractions.Kernel;
 
 public record UserId
 {

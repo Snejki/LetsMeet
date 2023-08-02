@@ -11,5 +11,7 @@ public class UserEndpoints : IEndpoints
     public void MapEndpoints(IEndpointRouteBuilder app)
     {
         app.MapPost("api/user", (CreateUserCommand command, IMessageBus messageBus) => messageBus.InvokeAsync(command));
+        
+        
     }
 }

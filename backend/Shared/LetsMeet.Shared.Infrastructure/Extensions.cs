@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using LetsMeet.Shared.Infrastructure.Auth;
 using LetsMeet.Shared.Infrastructure.CorrelationId;
 using LetsMeet.Shared.Infrastructure.DateTimeProvider;
 using LetsMeet.Shared.Infrastructure.Exceptions;
@@ -8,6 +9,7 @@ using LetsMeet.Shared.Infrastructure.SeriLog;
 using LetsMeet.Shared.Infrastructure.Swagger;
 using LetsMeet.Shared.Infrastructure.Wolverine;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -17,7 +19,7 @@ public static class Extensions
 {
     public static void AddInfrastructure(this WebApplicationBuilder builder, IList<Assembly> assemblies)
     {
-        builder.Services.AddServices();
+        builder.Services.AddServices(builder.Configuration);
         builder.Host.UseCustomWolverine(typeof(Extensions).Assembly, assemblies);
         builder.Host.UseCustomLogging(builder.Configuration);
     }
@@ -36,11 +38,14 @@ public static class Extensions
 
         app.UseCustomHealthChecks();
         app.UseHttpsRedirection();
+        app.UseAuthentication();
         app.UseAuthorization();
     }
 
-    private static void AddServices(this IServiceCollection services)
+    private static void AddServices(this IServiceCollection services, IConfiguration configuration)
     {
+        services.AddCustomAuth(configuration);
+        services.AddAuthOptions(configuration);
         services.AddCorrelationIdGenerator();
         services.AddCorrelationIdMiddleware();
         services.AddDateTimeProvider();

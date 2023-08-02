@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using LetsMeet.Shared.Infrastructure.Auth;
 using LetsMeet.Shared.Infrastructure.Validation;
 using Microsoft.AspNetCore.Builder;
 using Wolverine;
@@ -26,6 +27,6 @@ internal static class Extensions
 
     private static void AddMiddlewares(this IPolicies policies)
     {
-        // Method intentionally left empty.
+        policies.AddCurrentAccountMiddleware();
     }
 }

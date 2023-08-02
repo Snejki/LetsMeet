@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using LetsMeet.Modules.Users.Domain.Entities;
+using LetsMeet.Shared.Abstractions.Kernel;
 using Xunit;
 
 namespace LestMeet.Modules.Users.Tests.Unit.Domain.Entities;

@@ -3,8 +3,9 @@ using System.Security.Claims;
 using System.Text;
 using LetsMeet.Modules.Users.Application.Services;
 using LetsMeet.Modules.Users.Domain.Entities;
-using LetsMeet.Modules.Users.Infrastructure.Options;
 using LetsMeet.Shared.Abstractions.DateTimeProvider;
+using LetsMeet.Shared.Abstractions.Kernel;
+using LetsMeet.Shared.Infrastructure.Auth;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames;
@@ -38,8 +39,8 @@ internal class Authenticator : IAuthenticator
         
         var claims = new List<Claim>()
         {
-            new(JwtRegisteredClaimNames.Sub, userId.ToString()),
-            new(JwtRegisteredClaimNames.UniqueName, userId.ToString()),
+            new(JwtRegisteredClaimNames.Sub, userId.Id.ToString()),
+            new(JwtRegisteredClaimNames.UniqueName, userId.Id.ToString()),
         };
 
         var expiry = now.Add(_authOptions.Expiry ?? TimeSpan.FromHours(1));

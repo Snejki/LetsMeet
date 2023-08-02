@@ -1,7 +1,6 @@
 ﻿using LetsMeet.Modules.Users.Application.Services;
 using LetsMeet.Modules.Users.Domain.Repositories;
 using LetsMeet.Modules.Users.Infrastructure.DAL;
-using LetsMeet.Modules.Users.Infrastructure.Options;
 using LetsMeet.Modules.Users.Infrastructure.Repositories;
 using LetsMeet.Modules.Users.Infrastructure.Services;
 using LetsMeet.Shared.Infrastructure.Database;
@@ -21,7 +20,6 @@ public static class Extensions
         services.AddTransient<IPasswordEncrypter, PasswordEncrypter>();
         services.AddScoped<IPasswordHasher<string>, PasswordHasher<string>>();
         services.AddScoped<IAuthenticator, Authenticator>();
-        services.AddCustomOptions<AuthOptions>(configuration, AuthOptions.SectionName);
         
         services.AddCustomDbContext<UsersDbContext>("Users");
     }

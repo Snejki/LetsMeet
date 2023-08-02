@@ -1,4 +1,4 @@
-﻿namespace LetsMeet.Modules.Users.Infrastructure.Options;
+﻿namespace LetsMeet.Shared.Infrastructure.Auth;
 
 public class AuthOptions
 {
